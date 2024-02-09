@@ -8,13 +8,13 @@ This project was built using a Flask backend and an HTML/CSS/JS front-end with B
 ## Installation
 Make sure you have the latest version of Python installed (preferabbly 3.12+).
 
-This project requires Flask - a back-end framework for creating web applications. Using pip, run:
+This project requires Flask: a back-end framework for creating web applications. Using pip, run:
 
 ```
 pip install flask
 ```
 
-Make sure to have flask configured to:
+Make sure to have Flask configured to:
  - Target the file `app.py`
  - Media/static folder set to `static`
  - Templates folder set to `templates`
