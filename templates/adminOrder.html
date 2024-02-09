@@ -1,0 +1,121 @@
+{% extends 'layout.html'%}
+{% block body %}
+
+<style>
+
+table, th, td {
+  border: 0.125em solid black;
+  font-size: 20px;  
+}
+
+ul {
+    font-size: 1.5625em;
+}
+
+h1 {
+  font-size:3.125em;
+}
+
+body {
+  background: url('{{bgurl}}') no-repeat center center fixed;
+  -webkit-background-size: cover;
+  -moz-background-size: cover;
+  background-size: cover;
+  -o-background-size: cover;
+}
+</style>
+
+<body>
+    <div class="container">
+        <div class="card border-0 shadow my-5">
+          <div class="card-body p-5">
+   <h1><b><u>Orders</u></b></h1>
+   <a href="#Nav" data-toggle="collapse">Navigation</a>
+   <div id="Nav" class="collapse">
+   <ul style>
+       <li><a href="{{url_for('adminMenu')}}"><em>Command Centre</em></a></li>
+   </ul>
+   </div>
+   <br>
+   <br>
+   
+   <a href="#Search" class="btn btn-primary" data-toggle="collapse">Filter Orders ▼</a>
+    <div id="Search" class="collapse">
+        <br>
+   <form action="/adminOrderSearch" method="POST">
+    <div class="form-group">
+        <label for="ordername"><b>Search by First Name</b></label>
+        <input class ="form-control" type="text" id="ordername" name="ordername">
+        <br>
+        <button class = "btn btn-primary" type="insert">Search</button>
+        <a href="{{url_for('adminOrder')}}">All Names</a>
+    </div>
+<br>
+</form>
+    <form action="/adminItemSearch" method="POST">
+    <div class="form-group">
+        <label for="itemsearch"><b>Search by Items</b></label>
+            <fieldset>
+                  <select id = "itemsearch" name="itemsearch" class="form-control">
+                    {% for item in itemList %}
+                    <option value = "{{item[0]}}">{{item[0]}}</option>
+                    {% endfor %}
+                  </select>
+                </fieldset>
+                <br>
+                <button class = "btn btn-primary" type="insert">Search</button>
+                <a href="{{url_for('adminOrder')}}">All Items</a>
+            </div>
+</form>
+</div>
+<br>
+<br>
+<a href="#Orders" class="btn btn-primary" data-toggle="collapse">Hide Order List ▲</a>
+    <div id="Orders" class="collapse show">
+<br>
+<h6><em>Orders Sorted by Time Placed</em></h6>
+<br>    
+   <table>
+        <thead>
+            <tr>
+                <th>No.</th>
+                <th>First Name</th>
+                <th>Last Name</th>
+                <th>Time</th>
+                <th>Location</th>
+                <th>Extras</th>
+                <th>Items</th>
+                <th>Price</th>
+                <th>Payment</th>
+                <th> </th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for item in orderList %}
+            <tr>
+                <td>{{item[8]}}</td>
+                <td>{{item[0]}}</td>
+                <td>{{item[1]}}</td>
+                <td>{{item[2]}}</td>
+                <td>{{item[6]}}</td>
+                <td>{{item[5]}}</td>
+                <td>{{item[7]}}</td>
+                <td>${{item[4]}}</td>
+                <td>{{item[3]}}</td>
+                <td><a href="{{url_for('update', status=item[3], id=item[8])}}"><b>Update</b></a></td>
+            </tr>
+            {% endfor %}
+        </tbody>
+   </table>
+</div>
+<br>
+<br>
+<button class = "btn btn-primary" onclick="window.print()">Print Order List</button>
+<a href="{{url_for('logout')}}">Logout</a>
+<br>
+<br>
+</div>
+</div>
+</div>
+</body>
+{% endblock %}

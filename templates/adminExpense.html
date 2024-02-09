@@ -1,0 +1,43 @@
+{% extends 'layout.html'%}
+{% block body %}
+<style>
+
+h1 {
+  font-size: 3.125em;
+}
+
+body {
+  background: url('{{url_for('bgdef')}}') no-repeat center center fixed;
+  -webkit-background-size: cover;
+  -moz-background-size: cover;
+  background-size: cover;
+  -o-background-size: cover;
+}
+</style>
+
+<body>
+  <div class="container">
+    <div class="card border-0 shadow my-5">
+      <div class="card-body p-5">
+<h1><b><u>New Expense</u></b></h1>
+
+<form action="/adminExpense" method="POST">
+    <div class="form-group">
+        <label for="name"><b>Name</b></label>
+        <input required placeholder="Enter Name" class ="form-control" type="text" id="name" name="name">
+        <br>
+        <label for="amount"><b>Amount</b></label>
+        <input required placeholder="Enter Amount" class ="form-control" type="text" id="price" name="amount">
+        <br>
+        <label for="information"><b>Description</b></label>
+        <input required placeholder="Enter Description" class ="form-control" type="text" id="information" name="information">
+        <br>
+        <button class = "btn btn-primary" type="insert">Insert</button>
+    </div>
+</form>
+<a href="{{url_for('adminMenu')}}">Go Back</a>
+</div>
+</div>
+</div>
+</body>
+{% endblock %}

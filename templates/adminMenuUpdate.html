@@ -1,0 +1,54 @@
+{% extends 'layout.html'%}
+{% block body %}
+<style>
+
+h1 {
+  font-size:3.125em;
+}
+
+body {
+  background: url('{{bgurl}}') no-repeat center center fixed;
+  -webkit-background-size: cover;
+  -moz-background-size: cover;
+  background-size: cover;
+  -o-background-size: cover;
+}
+</style>
+
+<body>
+  <div class="container">
+    <div class="card border-0 shadow my-5">
+      <div class="card-body p-5">
+<h1><b><u>Update Item</u></b></h1>
+
+<form action="/adminMenuUpdate" method="POST">
+    <div class="form-group">
+        <label for="idu"><b>Item ID</b></label>
+            <fieldset>
+                  <select id = "idu" name="idu" class="form-control">
+                    {% for item in idList %}
+                    <option value = "{{item[0]}}">{{item[0]}}</option>
+                    {% endfor %}
+                  </select>
+            </fieldset>
+        <label for="nameu"><b>New Name</b></label>
+        <input required class ="form-control" type="text" id="nameu" name="nameu" placeholder="Enter New Name">
+        <br>
+        <label for="priceu"><b>New Price</b></label>
+        <input required class ="form-control" type="text" id="priceu" name="priceu" placeholder="Enter New Price">
+        <br>
+        <label for="profitu"><b>New Profit</b></label>
+        <input required class ="form-control" type="text" id="profitu" name="profitu" placeholder="Enter New Profit Value">
+        <br>
+        <label for="categoruy"><b>New Category</b></label>
+        <input required class ="form-control" type="text" id="categoryu" name="categoryu" placeholder="Enter New Category">
+        <br>
+        <button required class = "btn btn-primary" type="insert">Update</button>
+    </div>
+</form>
+<a href="{{url_for('adminMenu')}}">Go Back</a>
+</div>
+</div>
+</div>
+</body>
+{% endblock %}

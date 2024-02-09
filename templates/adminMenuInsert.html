@@ -1,0 +1,46 @@
+{% extends 'layout.html'%}
+{% block body %}
+<style>
+
+h1 {
+  font-size:3.125em;
+}
+
+body {
+  background: url('{{bgurl}}') no-repeat center center fixed;
+  -webkit-background-size: cover;
+  -moz-background-size: cover;
+  background-size: cover;
+  -o-background-size: cover;
+}
+</style>
+
+<body>
+  <div class="container">
+    <div class="card border-0 shadow my-5">
+      <div class="card-body p-5">
+<h1><b><u>New Item</u></b></h1>
+
+<form action="/adminMenuInsert" method="POST">
+    <div class="form-group">
+        <label for="name"><b>Name</b></label>
+        <input required class ="form-control" type="text" id="name" name="name" placeholder="Enter Name">
+        <br>
+        <label for="price"><b>Price</b></label>
+        <input required class ="form-control" type="text" id="price" name="price" placeholder="Enter Price">
+        <br>
+        <label for="profit"><b>Profit</b></label>
+        <input required class ="form-control" type="text" id="profit" name="profit" placeholder="Enter Profit Amount">
+        <br>
+        <label for="category"><b>Category</b></label>
+        <input required class ="form-control" type="text" id="category" name="category" placeholder="Enter Category">
+        <br>
+        <button required class = "btn btn-primary" type="insert">Insert</button>
+    </div>
+</form>
+<a href="{{url_for('adminMenu')}}">Go Back</a>
+</div>
+</div>
+</div>
+</body>
+{% endblock %}
